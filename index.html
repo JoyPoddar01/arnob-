@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arnob Dutta - Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons (Vanilla JS version) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#eff6ff',
+                100: '#dbeafe',
+                200: '#bfdbfe',
+                300: '#93c5fd',
+                400: '#60a5fa',
+                500: '#3b82f6',
+                600: '#2563eb',
+                700: '#1d4ed8',
+                800: '#1e40af',
+                900: '#1e3a8a',
+              }
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            animation: {
+              blob: "blob 7s infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap');
+      
+      body {
+        font-family: 'Inter', 'Hind Siliguri', sans-serif;
+      }
+      
+      /* Animation Classes */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        will-change: opacity, transform;
+      }
+      
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-brand-50 text-slate-800 transition-colors duration-300 dark:bg-slate-900 dark:text-slate-100 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-brand-100 dark:border-slate-800 transition-all duration-300">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <!-- Logo -->
+          <div class="flex items-center gap-2">
+            <div class="bg-brand-600 text-white p-1.5 rounded-lg shadow-lg">
+              <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+            </div>
+            <span class="font-bold text-xl text-brand-700 dark:text-brand-400">Arnob.</span>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center gap-4">
+            <button id="lang-toggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-50 dark:bg-slate-800 text-brand-700 dark:text-brand-300 hover:bg-brand-100 dark:hover:bg-slate-700 transition-all active:scale-95 text-sm font-medium border border-brand-200 dark:border-slate-700">
+              <i data-lucide="globe" class="w-4 h-4"></i>
+              <span id="current-lang-text">BN</span>
+            </button>
+            
+            <button id="theme-toggle" class="p-2 rounded-full bg-brand-50 dark:bg-slate-800 text-brand-600 dark:text-yellow-400 hover:bg-brand-100 dark:hover:bg-slate-700 transition-all active:rotate-12 border border-brand-200 dark:border-slate-700 shadow-sm">
+              <i data-lucide="moon" class="w-5 h-5 hidden dark:block"></i>
+              <i data-lucide="sun" class="w-5 h-5 block dark:hidden"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main class="flex-grow pt-16">
+      
+      <!-- Hero Section -->
+      <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden fade-in-section">
+        <!-- Background Blobs -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-brand-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+        <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+
+        <div class="relative max-w-4xl mx-auto px-4 text-center z-10">
+          <span data-i18n="hero.greeting" class="inline-block py-1 px-3 rounded-full bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-300 text-sm font-semibold mb-6 tracking-wide uppercase">
+            হ্যালো, আমি
+          </span>
+          <h1 data-i18n="hero.name" class="text-5xl md:text-7xl font-bold mb-6 text-slate-900 dark:text-white leading-tight">
+            অর্ণব দত্ত
+          </h1>
+          <p data-i18n="hero.subtitle" class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto font-light">
+            গণিত ভালোবাসে এমন এক কৌতূহলী শিক্ষার্থী
+          </p>
+          
+          <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})" class="group relative inline-flex items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full font-medium transition-all shadow-lg hover:shadow-brand-500/30 hover:-translate-y-1">
+            <span data-i18n="hero.cta">আমার সম্পর্কে জানুন</span>
+            <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+          </button>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <div id="about" class="max-w-6xl mx-auto px-4 py-20 space-y-32">
+        <section class="fade-in-section">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
+              <i data-lucide="user" class="text-brand-500 w-8 h-8"></i>
+              <span data-i18n="about.title">আমার পরিচয়</span>
+            </h2>
+            <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-700 card-hover">
+              <div class="space-y-6">
+                <!-- Age -->
+                <div class="flex items-center gap-4 group">
+                  <div class="p-3 bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 rounded-xl">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p data-i18n="about.details.ageLabel" class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">বয়স</p>
+                    <p data-i18n="about.details.ageValue" class="text-lg font-bold text-slate-800 dark:text-slate-100">১৪ বছর</p>
+                  </div>
+                </div>
+                <!-- Class -->
+                <div class="flex items-center gap-4 group">
+                  <div class="p-3 bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 rounded-xl">
+                    <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p data-i18n="about.details.classLabel" class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">শ্রেণী</p>
+                    <p data-i18n="about.details.classValue" class="text-lg font-bold text-slate-800 dark:text-slate-100">সপ্তম</p>
+                  </div>
+                </div>
+                <!-- School -->
+                <div class="flex items-center gap-4 group">
+                  <div class="p-3 bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 rounded-xl">
+                    <i data-lucide="school" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p data-i18n="about.details.schoolLabel" class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">স্কুল</p>
+                    <p data-i18n="about.details.schoolValue" class="text-lg font-bold text-slate-800 dark:text-slate-100">পুলিশ লাইন স্কুল এন্ড কলেজ</p>
+                  </div>
+                </div>
+                <!-- Location -->
+                <div class="flex items-center gap-4 group">
+                  <div class="p-3 bg-brand-50 dark:bg-slate-700 text-brand-600 dark:text-brand-400 rounded-xl">
+                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p data-i18n="about.details.locationLabel" class="text-sm text-slate-500 dark:text-slate-400 font-medium uppercase tracking-wide">অবস্থান</p>
+                    <p data-i18n="about.details.locationValue" class="text-lg font-bold text-slate-800 dark:text-slate-100">ফরিদপুর, বাংলাদেশ</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Student ID Card Visual -->
+            <div class="relative group perspective-1000">
+              <div class="absolute inset-0 bg-gradient-to-tr from-brand-600 to-purple-600 rounded-3xl transform rotate-3 group-hover:rotate-6 transition-transform opacity-70 blur-md"></div>
+              <div class="relative h-full bg-slate-900 rounded-3xl p-8 text-white flex flex-col justify-center items-center text-center shadow-2xl border border-slate-700">
+                <div class="w-24 h-24 bg-brand-500 rounded-full flex items-center justify-center mb-6 text-3xl shadow-inner">
+                  👨‍🎓
+                </div>
+                <h3 data-i18n="hero.name" class="text-2xl font-bold mb-2">অর্ণব দত্ত</h3>
+                <p data-i18n="about.details.schoolValue" class="text-brand-300 mb-6">পুলিশ লাইন স্কুল এন্ড কলেজ</p>
+                <div class="text-sm opacity-80 italic">"<span data-i18n="hero.subtitle">গণিত ভালোবাসে এমন এক কৌতূহলী শিক্ষার্থী</span>"</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Routine Section -->
+        <section id="routine" class="fade-in-section">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
+              <i data-lucide="calendar" class="text-brand-500 w-8 h-8"></i>
+              <span data-i18n="routine.title">আমার প্রাত্যহিক রুটিন</span>
+            </h2>
+            <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="routine-grid">
+            <!-- Routine Items Generated by JS -->
+          </div>
+        </section>
+
+        <!-- Interests Section -->
+        <section id="interests" class="fade-in-section">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-4 flex items-center justify-center gap-3">
+              <i data-lucide="heart" class="text-brand-500 w-8 h-8"></i>
+              <span data-i18n="interests.title">পছন্দ ও শখ</span>
+            </h2>
+            <div class="h-1 w-20 bg-brand-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Favorites -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Favorite Subject -->
+              <div class="p-6 rounded-2xl bg-blue-50 dark:bg-slate-800 border-2 border-blue-200 dark:border-slate-600 flex items-center justify-between card-hover">
+                <div>
+                  <h4 data-i18n="interests.favorites.0.label" class="text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-1">প্রিয় বিষয়</h4>
+                  <p data-i18n="interests.favorites.0.value" class="text-2xl font-bold text-slate-800 dark:text-white">গণিত</p>
+                </div>
+                <div class="text-4xl">📐</div>
+              </div>
+              <!-- Favorite Color -->
+              <div class="p-6 rounded-2xl bg-blue-50 dark:bg-slate-800 border-2 border-blue-200 dark:border-slate-600 flex items-center justify-between card-hover">
+                <div>
+                  <h4 data-i18n="interests.favorites.1.label" class="text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400 font-semibold mb-1">প্রিয় রং</h4>
+                  <p data-i18n="interests.favorites.1.value" class="text-2xl font-bold text-slate-800 dark:text-white">নীল</p>
+                </div>
+                <div class="w-12 h-12 rounded-full bg-blue-500 shadow-lg border-4 border-white dark:border-slate-700"></div>
+              </div>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-700">
+              <h3 data-i18n="interests.hobbies.title" class="text-xl font-bold mb-6 text-slate-900 dark:text-white border-b pb-2 border-slate-200 dark:border-slate-700">
+                যা করতে ভালোবাসি
+              </h3>
+              <div class="flex flex-wrap gap-3" id="hobbies-list">
+                <!-- Hobbies injected by JS -->
+              </div>
+            </div>
+
+            <!-- Special Note -->
+            <div class="bg-gradient-to-r from-brand-500 to-brand-600 rounded-3xl p-8 text-white text-center shadow-xl transform hover:scale-[1.01] transition-transform">
+              <p data-i18n="interests.special" class="text-lg md:text-xl font-medium leading-relaxed opacity-95">
+                ছুটিতে শরীয়তপুরে মামার বাড়ি যেতে আমার খুব ভালো লাগে! 🚗
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 mt-20">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <div class="mb-6 flex justify-center">
+           <div class="bg-white/10 p-3 rounded-full">
+              <i data-lucide="graduation-cap" class="text-brand-400 w-8 h-8"></i>
+           </div>
+        </div>
+        <p data-i18n="footer.thanks" class="text-xl font-medium mb-4 text-white">আমার পোর্টফোলিও দেখার জন্য ধন্যবাদ!</p>
+        <div class="text-sm opacity-60">
+          &copy; <span id="year"></span> <span data-i18n="footer.copyright">অর্ণব দত্ত</span>. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+      // --- DATA ---
+      const translations = {
+        en: {
+          nav: { home: "Home", about: "About", routine: "Routine", interests: "Interests" },
+          hero: {
+            greeting: "Hello, I am",
+            name: "Arnob Dutta",
+            subtitle: "A Curious Student Who Loves Mathematics",
+            cta: "Learn More About Me"
+          },
+          about: {
+            title: "About Me",
+            details: {
+              ageLabel: "Age", ageValue: "14 Years",
+              classLabel: "Class", classValue: "Seven",
+              schoolLabel: "School", schoolValue: "Police Line School & College",
+              locationLabel: "Location", locationValue: "Faridpur, Bangladesh"
+            }
+          },
+          routine: {
+            title: "My Daily Routine",
+            items: [
+              { time: "7:00 AM", activity: "Wake up & Breakfast", icon: "sun" },
+              { time: "8:00 AM", activity: "Go to School", icon: "school" },
+              { time: "2:00 PM", activity: "Lunch & Rest", icon: "bed-double" },
+              { time: "4:00 PM", activity: "Play & Socialize", icon: "gamepad-2" },
+              { time: "6:00 PM", activity: "Study Time", icon: "book-open" },
+              { time: "10:00 PM", activity: "Deep Sleep", icon: "bed-double" }
+            ]
+          },
+          interests: {
+            title: "Interests & Favorites",
+            favorites: [
+              { label: "Favorite Subject", value: "Mathematics" },
+              { label: "Favorite Color", value: "Blue" },
+            ],
+            hobbies: {
+              title: "Things I Love",
+              list: ["Sleeping 😴", "Socializing with people 🗣️", "Solving Math Problems 📐"]
+            },
+            special: "I love visiting my maternal uncle’s house in Shariatpur during holidays! 🚗"
+          },
+          footer: { thanks: "Thanks for visiting my portfolio!", copyright: "Arnob Dutta" }
+        },
+        bn: {
+          nav: { home: "হোম", about: "পরিচিতি", routine: "রুটিন", interests: "শখ" },
+          hero: {
+            greeting: "হ্যালো, আমি",
+            name: "অর্ণব দত্ত",
+            subtitle: "গণিত ভালোবাসে এমন এক কৌতূহলী শিক্ষার্থী",
+            cta: "আমার সম্পর্কে জানুন"
+          },
+          about: {
+            title: "আমার পরিচয়",
+            details: {
+              ageLabel: "বয়স", ageValue: "১৪ বছর",
+              classLabel: "শ্রেণী", classValue: "সপ্তম",
+              schoolLabel: "স্কুল", schoolValue: "পুলিশ লাইন স্কুল এন্ড কলেজ",
+              locationLabel: "অবস্থান", locationValue: "ফরিদপুর, বাংলাদেশ"
+            }
+          },
+          routine: {
+            title: "আমার প্রাত্যহিক রুটিন",
+            items: [
+              { time: "সকাল ৭:০০", activity: "ঘুম থেকে ওঠা ও নাস্তা", icon: "sun" },
+              { time: "সকাল ৮:০০", activity: "স্কুলে যাওয়া", icon: "school" },
+              { time: "দুপুর ২:০০", activity: "দুপুরের খাবার ও বিশ্রাম", icon: "bed-double" },
+              { time: "বিকেল ৪:০০", activity: "খেলাধুলা ও আড্ডা", icon: "gamepad-2" },
+              { time: "সন্ধ্যা ৬:০০", activity: "পড়াশোনা", icon: "book-open" },
+              { time: "রাত ১০:০০", activity: "গভীর ঘুম", icon: "bed-double" }
+            ]
+          },
+          interests: {
+            title: "পছন্দ ও শখ",
+            favorites: [
+              { label: "প্রিয় বিষয়", value: "গণিত" },
+              { label: "প্রিয় রং", value: "নীল" },
+            ],
+            hobbies: {
+              title: "যা করতে ভালোবাসি",
+              list: ["ঘুমানো 😴", "মানুষের সাথে মিশতে 🗣️", "গণিতের সমাধান করতে 📐"]
+            },
+            special: "ছুটিতে শরীয়তপুরে মামার বাড়ি যেতে আমার খুব ভালো লাগে! 🚗"
+          },
+          footer: { thanks: "আমার পোর্টফোলিও দেখার জন্য ধন্যবাদ!", copyright: "অর্ণব দত্ত" }
+        }
+      };
+
+      // --- STATE & UTILS ---
+      let currentLang = 'bn';
+
+      function getNestedValue(obj, path) {
+        return path.split('.').reduce((prev, curr) => prev ? prev[curr] : null, obj);
+      }
+
+      function updateContent() {
+        const t = translations[currentLang];
+        
+        // Update Static Text
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          const value = getNestedValue(t, key);
+          if (value) el.textContent = value;
+        });
+
+        // Update Language Button Text
+        document.getElementById('current-lang-text').textContent = currentLang.toUpperCase();
+
+        // Update Routine Grid (Dynamic HTML)
+        const routineContainer = document.getElementById('routine-grid');
+        routineContainer.innerHTML = t.routine.items.map(item => `
+          <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-md border border-slate-100 dark:border-slate-700 card-hover">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="p-3 bg-brand-100 dark:bg-brand-900 text-brand-600 dark:text-brand-300 rounded-xl">
+                <i data-lucide="${item.icon}" class="w-6 h-6"></i>
+              </div>
+              <span class="font-bold text-lg text-slate-800 dark:text-slate-100">${item.time}</span>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 font-medium pl-2 border-l-4 border-brand-200 dark:border-brand-700">
+              ${item.activity}
+            </p>
+          </div>
+        `).join('');
+
+        // Update Hobbies List (Dynamic HTML)
+        const hobbiesContainer = document.getElementById('hobbies-list');
+        hobbiesContainer.innerHTML = t.interests.hobbies.list.map(hobby => `
+          <span class="px-4 py-2 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-lg text-lg font-medium hover:bg-brand-100 dark:hover:bg-brand-900 hover:text-brand-700 dark:hover:text-brand-300 transition-colors cursor-default">
+            ${hobby}
+          </span>
+        `).join('');
+
+        // Re-initialize icons for new dynamic content
+        lucide.createIcons();
+      }
+
+      // --- THEME ---
+      function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+
+      function toggleTheme() {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+
+      // --- ANIMATIONS ---
+      function setupIntersectionObserver() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in-section').forEach(section => {
+          observer.observe(section);
+        });
+      }
+
+      // --- INITIALIZATION ---
+      document.addEventListener('DOMContentLoaded', () => {
+        // Init Components
+        initTheme();
+        updateContent();
+        setupIntersectionObserver();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Event Listeners
+        document.getElementById('lang-toggle').addEventListener('click', () => {
+          currentLang = currentLang === 'en' ? 'bn' : 'en';
+          updateContent();
+        });
+
+        document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+      });
+    </script>
+  </body>
+</html>
